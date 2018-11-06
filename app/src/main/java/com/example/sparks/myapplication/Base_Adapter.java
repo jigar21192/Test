@@ -45,8 +45,6 @@ public class Base_Adapter extends BaseAdapter {
         TextView name1=(TextView)convertView.findViewById(R.id.txt);
 
         Model model=list.get(position);
-
-
         name1.setText(model.getName());
         name1.setBackgroundColor(Color.parseColor(model.getColor()));
 

@@ -6,17 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".Details">
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name1"
+        android:text="Name:-"
+        android:textSize="20dp"/>
     <TextView
         android:layout_width="match_parent"
+        android:layout_marginLeft="125dp"
         android:layout_height="wrap_content"
         android:id="@+id/name"
-        android:layout_centerHorizontal="true"
         android:text="Name"
         android:textSize="20dp"/>
-
+    <TextView
+        android:id="@+id/gender1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:text="Gender:-"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat" />
     <TextView
         android:id="@+id/gender"
+        android:layout_marginLeft="125dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
@@ -24,51 +37,91 @@
         android:text="Gender"
         android:textSize="20dp"
         tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/age1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_alignParentStart="true"
 
+        android:layout_marginTop="26dp"
+        android:text="Age:-"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat" />
     <TextView
         android:id="@+id/age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
+        android:layout_marginLeft="125dp"
         android:layout_marginTop="26dp"
         android:text="Age"
         android:textSize="20dp"
         tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/balance1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_alignParentStart="true"
 
+        android:layout_marginTop="53dp"
+        android:text="Balance:-"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat" />
     <TextView
         android:id="@+id/balance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
+        android:layout_marginLeft="125dp"
         android:layout_marginTop="53dp"
         android:text="Balance"
         android:textSize="20dp"
         tools:ignore="RtlCompat" />
-
     <TextView
-        android:id="@+id/friends"
-        android:layout_width="match_parent"
+        android:id="@+id/friends1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
+
+        android:layout_marginTop="82dp"
+        android:text="Friends:-"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/friends"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/name"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="125dp"
         android:layout_marginTop="82dp"
         android:text="Friends"
         android:textSize="20dp"
         tools:ignore="RtlCompat" />
-
+    <TextView
+        android:id="@+id/online1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="293dp"
+        android:text="Is online:-"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat" />
     <TextView
         android:id="@+id/online"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="293dp"
         android:text="online"
         android:textSize="20dp"
         tools:ignore="RtlCompat" />

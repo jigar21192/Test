@@ -1,5 +1,7 @@
 package com.example.sparks.myapplication;
 
+import java.util.ArrayList;
+
 public class Model {
 
     public String getIndex() {
@@ -124,4 +126,13 @@ public class Model {
 
     String index,_id,name,color,gender,age,registered,email,phone,address,balance,sid,sname,company,isActive;
 
+    public ArrayList<String> getSname1() {
+        return sname1;
+    }
+
+    public void setSname1(ArrayList<String> sname1) {
+        this.sname1 = sname1;
+    }
+
+    ArrayList<String> sname1;
 }

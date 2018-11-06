@@ -28,10 +28,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String sname,sid,color;
+    String sname,sid,color,index,_id,name,gender,age,registered,email,phone,address,balance,company,isActive;
     ListView listView;
     List<Model>list=new ArrayList<>();
+    List<String>str=new ArrayList<>();
     Context context;
+
 
     String URL="http://www.json-generator.com/api/json/get/ceRwfmKnVK?indent=2";
     @Override
@@ -40,70 +42,62 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listView=(ListView)findViewById(R.id.lv);
-
-
         StringRequest request=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-             //   Log.e("Res",">>>"+response);
-
                 try {
                     JSONArray array=new JSONArray(response);
 
                     for (int i=0;i<array.length();i++){
                         JSONObject object=array.getJSONObject(i);
-                        String index=object.getString("index");
-                        String _id=object.getString("_id");
-                        String name=object.getString("name");
+                         index=object.getString("index");
+                         _id=object.getString("_id");
+                         name=object.getString("name");
 
 
-                        color=object.getString("color");
-                        String gender=object.getString("gender");
-                        String age=object.getString("age");
-                        String registered=object.getString("registered");
-                        String email=object.getString("email");
-                        String phone=object.getString("phone");
-                        String address=object.getString("address");
-                        String balance=object.getString("balance");
+                         color=object.getString("color");
+                         gender=object.getString("gender");
+                         age=object.getString("age");
+                         registered=object.getString("registered");
+                         email=object.getString("email");
+                         phone=object.getString("phone");
+                         address=object.getString("address");
+                         balance=object.getString("balance");
+                        company=object.getString("company");
+                        isActive=object.getString("isActive");
 
+                        Model model=new Model();
+                        model.set_id(_id);
+                        model.setIndex(index);
+                        model.setName(name);
+                        model.setColor(color);
+                        model.setGender(gender);
+                        model.setAge(age);
+                        model.setRegistered(registered);
+                        model.setEmail(email);
+                        model.setPhone(phone);
+                        model.setAddress(address);
+                        model.setBalance(balance);
+                        model.setCompany(company);
+                        model.setIsActive(isActive);
                         JSONArray array1=object.getJSONArray("friends");
+                        ArrayList<String> sname1 = new ArrayList<String>();
                         for (int j=0;j<array1.length();j++) {
                             JSONObject object1=array1.getJSONObject(j);
                              sid = object1.getString("id");
 
 
-                             sname = object1.getString("name")+",";
+                             sname = object1.getString("name");
+
+                             sname1.add(sname);
+
                         }
-                        String company=object.getString("company");
-                        String isActive=object.getString("isActive");
 
-
-
-                        Log.e("Log",">>>>>"+index+sname+company);
-
-                        Model model=new Model();
-                       model.set_id(_id);
-                       model.setIndex(index);
-                       model.setName(name);
-                       model.setColor(color);
-                       model.setGender(gender);
-                       model.setAge(age);
-                       model.setRegistered(registered);
-                       model.setEmail(email);
-                       model.setPhone(phone);
-                       model.setAddress(address);
-                       model.setBalance(balance);
-                       model.setSid(sid);
-                       model.setSname(sname);
-                       model.setCompany(company);
-                       model.setIsActive(isActive);
-
-                      list.add(model);
-
-                    }
-
-                    Base_Adapter base_adapter=new Base_Adapter(MainActivity.this,list);
-                    listView.setAdapter(base_adapter);
+                        model.setSname1(sname1);
+                        list.add(model);
+                        }
+                        Base_Adapter base_adapter=new Base_Adapter(MainActivity.this,list);
+                        listView.setAdapter(base_adapter);
 
 
 
@@ -112,18 +106,20 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position,
                                                     long id) {
+                            for (int k=0;k<list.get(position).getSname1().size();k++){
+                                str= list.get(position).getSname1();
+                            }
                             Intent intent=new Intent(MainActivity.this,Details.class);
                             intent.putExtra("name",list.get(position).getName());
                             intent.putExtra("gender",list.get(position).getGender());
                             intent.putExtra("age",list.get(position).getAge());
                             intent.putExtra("balance",list.get(position).getBalance());
-                            intent.putExtra("friend",list.get(position).getSname());
+                            intent.putStringArrayListExtra("friend", (ArrayList<String>) str);
                             intent.putExtra("online",list.get(position).getIsActive());
+                            startActivity(intent);
 
-                           startActivity(intent);
 
 
-                                Toast.makeText(getBaseContext(),list.get(position).getName(), Toast.LENGTH_LONG).show();
 
                             }
                     });
